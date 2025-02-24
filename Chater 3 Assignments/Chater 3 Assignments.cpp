@@ -1,42 +1,30 @@
 /* File Name: Chapter-3-Assignment 
 Programmer/Name: Christopher Wilson 
-Date: 2/20/2025
+Date: 2/19/2025
 
-Requirements: The follow program is a Loan Payment code that should ask the user the loan amount, monthly interest rate, number of payments, monthly payment, amount paid back and Interest Paid,
-After asking for the values, it should then display a report similar to the one provided in the assignment rubric. 
+Requirements: Create a program where a question is asked to the student. These numbers must be randomly generated.
+The program DOES NOT provide a space to type in the answer, but instead, answers the question given when the student is ready.
 */
 
 #include <iostream>
-#include <cmath>
-#include <iomanip>
+#include <cstdlib>  
+#include <ctime>    
 
 using namespace std;
 
 int main() {
-	double loanAmount, annualInterestRate, monthlyInterestRate, monthlyPayment, amountPaidBack, interestPaid; int numberOfPayments;
+    srand(static_cast<unsigned int>(time(0)));
 
-	cout << "Enter the loan amount: ";
-	cin >> loanAmount;
-	cout << "Enter the annual interest rate (in percentage): ";
-	cin >> annualInterestRate;
-	cout << "Enter the number of payments: ";
-	cin >> numberOfPayments;
+    int num1 = rand() % 100 + 1;
+    int num2 = rand() % 100 + 1;
+ 
+    cout << "What is " << num1 << " + " << num2 << "?" << endl;
 
-	monthlyInterestRate = (annualInterestRate / 100) / 12;
+    cout << "Press Enter when you're ready to check your answer...";
+    cin.get(); 
 
-	monthlyPayment = (monthlyInterestRate * pow(1 + monthlyInterestRate, numberOfPayments) / (pow(1 + monthlyInterestRate, numberOfPayments) - 1)) * loanAmount;
+    int correctAnswer = num1 + num2;
+    cout << "The correct answer is: " << correctAnswer << endl;
 
-	amountPaidBack = monthlyPayment * numberOfPayments;
-	interestPaid = amountPaidBack - loanAmount;
-
-	cout << fixed << setprecision(2);
-	cout << "Loan Amount: $" << loanAmount << endl;
-	cout << "Monthly Interest Rate: " << monthlyInterestRate * 100 << "%" << endl;
-	cout << "Number of Payments: " << numberOfPayments << endl;
-	cout << "Monthly Payment: $" << monthlyPayment << endl;
-	cout << "Amount Paid Back: $" << amountPaidBack << endl;
-	cout << "Interest Paid: $" << interestPaid << endl;
-
-	return 0;
-
+    return 0;
 }
