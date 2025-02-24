@@ -2,40 +2,42 @@
 Programmer/Name: Christopher Wilson 
 Date: 2/20/2025
 
-Requirements: The follow program is a Loan Payment code that should ask the user the loan amount, monthly interest rate, number of payments, monthly payment, amount paid back and Interest Paid,
-After asking for the values, it should then display a report similar to the one provided in the assignment rubric. 
+Requirements: Create a program that asks the user the principal amount, rate and interested that is compounded per year.
+After inputs, it should the display a report similar to that in the assignment.
 */
 
 #include <iostream>
-#include <cmath>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
 int main() {
-	double loanAmount, annualInterestRate, monthlyInterestRate, monthlyPayment, amountPaidBack, interestPaid; int numberOfPayments;
+	
+	double principal, rate, amount, interest;
+	int T;
 
-	cout << "Enter the loan amount: ";
-	cin >> loanAmount;
-	cout << "Enter the annual interest rate (in percentage): ";
-	cin >> annualInterestRate;
-	cout << "Enter the number of payments: ";
-	cin >> numberOfPayments;
+	cout << "Enter the principal amount ($): ";
+	cin >> principal;
 
-	monthlyInterestRate = (annualInterestRate / 100) / 12;
+	cout << "Enter the interest rate (as a percentage): ";
+	cin >> rate;
 
-	monthlyPayment = (monthlyInterestRate * pow(1 + monthlyInterestRate, numberOfPayments) / (pow(1 + monthlyInterestRate, numberOfPayments) - 1)) * loanAmount;
+	cout << "Enter the number of times the interest is compounded per year: ";
+	cin >> T;
 
-	amountPaidBack = monthlyPayment * numberOfPayments;
-	interestPaid = amountPaidBack - loanAmount;
+	rate = rate / 100.0;
+
+	amount = principal * pow((1 + rate / T), T);
+
+	interest = amount - principal;
 
 	cout << fixed << setprecision(2);
-	cout << "Loan Amount: $" << loanAmount << endl;
-	cout << "Monthly Interest Rate: " << monthlyInterestRate * 100 << "%" << endl;
-	cout << "Number of Payments: " << numberOfPayments << endl;
-	cout << "Monthly Payment: $" << monthlyPayment << endl;
-	cout << "Amount Paid Back: $" << amountPaidBack << endl;
-	cout << "Interest Paid: $" << interestPaid << endl;
+	cout << "\nInterest Rate = " << rate * 100 << "%" << endl;
+	cout << "Times compounded: " << T << endl;
+	cout << "Principal: $" << principal << endl;
+	cout << "Interest: $" << interest << endl;
+	cout << "Amount in savings: $" << amount << endl;
 
 	return 0;
 
