@@ -1,41 +1,31 @@
-/* File Name: Chapter-3-Assignment 
+/* Github File Name: Chapter-3-Assignment (Ingediant Adjuster)
 Programmer/Name: Christopher Wilson 
-Date: 2/20/2025
+Date: 2/19/2025
 
-Requirements: The follow program is a Loan Payment code that should ask the user the loan amount, monthly interest rate, number of payments, monthly payment, amount paid back and Interest Paid,
-After asking for the values, it should then display a report similar to the one provided in the assignment rubric. 
+Requirements: A cookie recipe calls for a certain amount of ingrediants.
+The following program should ask he or she how many cookies they want to make (48). The program should then display the proper amount of ingediants for 48 cookies.
 */
 
 #include <iostream>
-#include <cmath>
-#include <iomanip>
-
 using namespace std;
 
 int main() {
-	double loanAmount, annualInterestRate, monthlyInterestRate, monthlyPayment, amountPaidBack, interestPaid; int numberOfPayments;
+	double sugar = 1.5;
+	double butter = 1.0;
+	double flour = 2.75;
+	int cookies;
 
-	cout << "Enter the loan amount: ";
-	cin >> loanAmount;
-	cout << "Enter the annual interest rate (in percentage): ";
-	cin >> annualInterestRate;
-	cout << "Enter the number of payments: ";
-	cin >> numberOfPayments;
+	cout << "Enter the amount of cookies desired to be made. ";
+	cin >> cookies;
 
-	monthlyInterestRate = (annualInterestRate / 100) / 12;
+	double sugarNeeded = (sugar / 48) * cookies;
+	double butterNeeded = (butter / 48) * cookies;
+	double flourNeeded = (flour / 48) * cookies;
 
-	monthlyPayment = (monthlyInterestRate * pow(1 + monthlyInterestRate, numberOfPayments) / (pow(1 + monthlyInterestRate, numberOfPayments) - 1)) * loanAmount;
-
-	amountPaidBack = monthlyPayment * numberOfPayments;
-	interestPaid = amountPaidBack - loanAmount;
-
-	cout << fixed << setprecision(2);
-	cout << "Loan Amount: $" << loanAmount << endl;
-	cout << "Monthly Interest Rate: " << monthlyInterestRate * 100 << "%" << endl;
-	cout << "Number of Payments: " << numberOfPayments << endl;
-	cout << "Monthly Payment: $" << monthlyPayment << endl;
-	cout << "Amount Paid Back: $" << amountPaidBack << endl;
-	cout << "Interest Paid: $" << interestPaid << endl;
+	cout << "For " << cookies << " cookies, you will need:" << endl;
+	cout << sugarNeeded << " cups of sugar" << endl;
+	cout << butterNeeded << " cups of butter" << endl;
+	cout << flourNeeded << " cups of butter" << endl;
 
 	return 0;
 
